@@ -3,7 +3,7 @@
  *
  * Licensed under The MIT License (MIT)
  * https://github.com/traeger/google.maps.event.tap
- * Copyright (c) 2014 Marco Träger <marco.traeger at googlemail.com>
+ * Copyright (c) 2014 Marco Tr√§ger <marco.traeger at googlemail.com>
  *
  */
 var maps_enable_longtapevent;
