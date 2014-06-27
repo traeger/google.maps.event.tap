@@ -1,4 +1,4 @@
-google.maps.event.tap
+Tap and Longpresspress for the googlemaps api (js)
 =====================
 
-google.maps.event.tap
+
