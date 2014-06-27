@@ -1,4 +1,4 @@
-Google Maps API - Tap and Longpresspress
+Google Maps API - Tap and Longpress Events
 =====================
 
 
