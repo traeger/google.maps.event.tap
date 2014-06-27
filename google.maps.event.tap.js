@@ -2,6 +2,7 @@
  * Tap and Longpress support for the Google Maps API
  *
  * Licensed under The MIT License (MIT)
+ * https://github.com/traeger/google.maps.event.tap
  * Copyright (c) 2014 Marco Träger <marco.traeger at googlemail.com>
  *
  */
