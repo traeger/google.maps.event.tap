@@ -1,4 +1,4 @@
-Google Maps API - Tap and Longpress
+LongTap and LongPress Events
 =====================
-
+Adds LongTap and LongPress Events for the Google Maps API.
 
