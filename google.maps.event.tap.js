@@ -14,12 +14,6 @@ new function() { /* private scope */
     self.min_downtime = min_downtime;
     self.isDragging = false;
     self.map = map;
-    google.maps.event.addListener(map, 'touchstart', function(e) {
-      self.__onMouseDown(e);
-    });
-    google.maps.event.addListener(map, 'touchend', function(e) {
-      self.__onMouseUp(e);
-    });
     google.maps.event.addListener(map, 'mousedown', function(e) {
       self.__onMouseDown(e);
     });
