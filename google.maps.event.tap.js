@@ -9,11 +9,12 @@
 var maps_enable_longtapevent;
 new function() { /* private scope */
   var LongPress = function(map, min_downtime) {
-    var self = this;
+    this.min_downtime = min_downtime
+    this.isDragging = false
+    this.map = map
+    this.timer = false
     
-    self.min_downtime = min_downtime;
-    self.isDragging = false;
-    self.map = map;
+    var self = this
     google.maps.event.addListener(map, 'mousedown', function(e) {
       self.__onMouseDown(e);
     });
@@ -25,21 +26,35 @@ new function() { /* private scope */
     });
   }
   LongPress.prototype.__onMouseUp = function(e) {
-    var now = +new Date;
-    if (!this.isDragging && now - this.downTime > this.min_downtime) {
-      google.maps.event.trigger(this.map, 'longtap', e);
-    }
+    this.__cleartime()
   }
-  LongPress.prototype.__onMouseDown = function() {
-    this.downTime = +new Date;
-    this.isDragging = false;
+  LongPress.prototype.__onMouseDown = function(e) {
+    this.latLng = new google.maps.LatLng(e.latLng.lat(), e.latLng.lng())
+    this.__cleartime()
+    var self = this
+    this.timer = setTimeout(function() {
+      var event = new function() {}
+      event.latLng = self.latLng
+      self.__onLongPress(event)
+    }, this.min_downtime);
   }
   LongPress.prototype.__onMapDrag = function(e) {
-    this.isDragging = true;
-  };
+    this.__cleartime()
+  }
+  LongPress.prototype.__onLongPress = function(e) {
+    this.__cleartime()
+    google.maps.event.trigger(this.map, 'longtap', e);
+  }
+  LongPress.prototype.__cleartime = function() {
+    if(!!this.timer) {
+      window.clearTimeout(this.timer)
+      this.timer = false
+    }
+  }
   
   /* outer scope access */
   maps_enable_longtapevent = function(map, min_downtime) {
+    if(!!min_downtime) min_downtime = 500
     new LongPress(map, min_downtime); /* register the handler for the map */
   }
 }

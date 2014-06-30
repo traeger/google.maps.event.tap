@@ -36,8 +36,13 @@
     maxHeight: 400
   });
   
-  var onAddMarkerAttempt = function() {
-    window.alert('long tap detected');
+  var onAddMarkerAttempt = function(e) {
+    console.log('long tap detected!')
+    var marker = new google.maps.Marker({
+      position: e.latLng,
+      title: 'long tap detected!'
+    });
+    marker.setMap(map);
   }
   
   maps_enable_longtapevent(map, 300);
