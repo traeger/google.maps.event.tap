@@ -43,6 +43,7 @@ new function() { /* private scope */
   }
   LongPress.prototype.__onLongPress = function(e) {
     this.__cleartime()
+    this.__triggerMouseUp()
     google.maps.event.trigger(this.map, 'longtap', e);
   }
   LongPress.prototype.__cleartime = function() {
@@ -50,6 +51,11 @@ new function() { /* private scope */
       window.clearTimeout(this.timer)
       this.timer = false
     }
+  }
+  LongPress.prototype.__triggerMouseUp = function() {
+    var evt = document.createEvent("MouseEvents");
+    evt.initEvent("mouseup", true, true);
+    this.map.getDiv().dispatchEvent(evt);
   }
   
   /* outer scope access */

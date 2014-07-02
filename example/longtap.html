@@ -38,6 +38,7 @@
   
   var onAddMarkerAttempt = function(e) {
     console.log('long tap detected!')
+    window.alert('long tap detected!')
     var marker = new google.maps.Marker({
       position: e.latLng,
       title: 'long tap detected!'
