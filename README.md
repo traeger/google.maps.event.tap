@@ -1,6 +1,6 @@
-LongTap and LongPress Events
+LongTap Events
 =====================
-Adds LongTap and LongPress Events for the Google Maps API.
+LongTab Events for the Google Maps API.
 
 ```
 maps_enable_longtapevent(map, 300);  // longtab will be triggered after 300ms
